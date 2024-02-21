@@ -16,7 +16,7 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/fonts/*"
     ],
     "platforms": [
       "ios",
@@ -26,7 +26,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.Limpro.ydays2k23",
-      "buildNumber": "1.0",
+      "buildNumber": "1.0"
     },
     "android": {
       "package": "com.Limpro.ydays2k23",

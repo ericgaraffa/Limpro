@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
     createDrawerNavigator,
     DrawerContentScrollView,
-    DrawerItemList,
     DrawerItem, useDrawerProgress, DrawerToggleButton,
 } from '@react-navigation/drawer';
 import Home from './Home';
@@ -13,22 +12,11 @@ import Format_choice from './Format_choice';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import Personalization from "./Personalization";
 import {Image, StyleSheet, TouchableOpacity, View} from "react-native";
-import * as Font from 'expo-font';
-import {useState} from "react";
-import Apploading from "expo-app-loading";
 import basic_choice from "./Basic_choice";
-import {LinearGradient} from 'expo-linear-gradient';
-import {NavigationActions as navigation} from "react-navigation";
 import {useNavigation} from "@react-navigation/native";
-import { Raleway_200ExtraLight } from "@expo-google-fonts/raleway";
-import { Quicksand_300Light } from "@expo-google-fonts/quicksand";
-import {useFonts} from "expo-font";
+
 
 function CustomDrawerContent(props) {
-    const [fontsLoaded] = useFonts({
-        Raleway_200ExtraLight,
-        Quicksand_300Light,
-    });
     const progress = useDrawerProgress();
 
         return (
@@ -132,12 +120,7 @@ const styles = StyleSheet.create({
     label: {
         color: '#340335',
         fontSize: 18,
-        fontWeight: 'bold',
-        fontFamily: "Raleway_200ExtraLight",
-    },
-    raleway: {
-        fontSize: 20,
-        fontFamily: "Raleway_200ExtraLight",
+        fontFamily: "VinaSansRegular",
     },
     background: {
         position: 'absolute',

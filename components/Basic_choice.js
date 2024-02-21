@@ -2,42 +2,20 @@ import React from 'react';
 import {View, Text, Dimensions, TouchableHighlight, StyleSheet} from 'react-native';
 import {useNavigation} from "@react-navigation/native";
 import {LinearGradient} from 'expo-linear-gradient';
-import * as Font from 'expo-font';
 
 const {height, width} = Dimensions.get('window');
 
-const CustomText = (props) => {
-    const [fontLoaded, setFontLoaded] = useState(false);
-  
-    useEffect(() => {
-      async function loadFont() {
-        await Font.loadAsync({
-          'custom-font': require('../assets/fonts/CustomFont.ttf'),
-        });
-  
-        setFontLoaded(true);
-      }
-  
-      loadFont();
-    }, []);
-  
-    if (!fontLoaded) {
-      return <Text>Loading...</Text>;
-    }
-}
-
-const Basic_choice = (navigation) => {
+const Basic_choice = (navigation) => { 
     const nav = useNavigation();
     return (
         <View style={styles.container}>
-            <CustomText style={styles.text}>Hello, world!</CustomText>
             <LinearGradient
                 // Background Linear Gradient
                 colors={['rgba(63,15,64,0.9)', 'transparent']}
                 style={styles.background}
             />
             <View style={styles.centeredView}>
-                <TouchableHighlight 
+                <TouchableHighlight
                     style={styles.buttonStandard}
                     //Navigate to Game
                     onPress={() => nav.navigate("game", {

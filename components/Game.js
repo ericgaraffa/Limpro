@@ -3,6 +3,8 @@ import {View, Text, StyleSheet, Alert, Button, Dimensions, TouchableHighlight} f
 import { Audio } from 'expo-av';
 import {useNavigation} from "@react-navigation/native";
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Font from 'expo-font';
+
 let musicFiles = {
     'V6 - Bad dreams': require('../assets/music/Bad_dreams(V6).mp3'),
     'Nerso_Verse - Caution': require('../assets/music/Caution(Nerso_Verse).mp3'),
@@ -50,6 +52,7 @@ let musicFiles = {
 const {height, width} = Dimensions.get('window');
 
 const Game = (navigation) => {
+    
     const nav = useNavigation();
 
     const isMounted = useRef(true);
@@ -70,6 +73,24 @@ const Game = (navigation) => {
     const [songKey, setSongKey] = useState(null);
     const [initTime, setInitTime] = useState(4);
     const [currentMusic, setCurrentMusic] = useState("");
+    const [fontsLoaded, setFontsLoaded] = useState(false);
+
+
+    useEffect(() => {
+        const loadFonts = async () => {
+            try {
+                await Font.loadAsync({
+                    'PoppinsM': require('../assets/fonts/Poppins-Medium.ttf'),
+                    'PoppinsMBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
+                });
+                setFontsLoaded(true);
+            } catch (error) {
+                console.error("Error loading fonts:", error);
+            }
+        };
+    
+        loadFonts();
+    }, []);
 
     useEffect(() => {
         if (initTime > 0) {
@@ -244,6 +265,7 @@ const styles = StyleSheet.create({
     },
     timer: {
         color: 'white',
+        fontFamily: "PoppinsM",
         fontSize: 50,
         marginTop: height / 12,
         marginBottom: 30,
@@ -255,6 +277,7 @@ const styles = StyleSheet.create({
     },
     player: {
         color: 'white',
+        fontFamily: "PoppinsM",
         fontSize: 20,
         marginBottom: 20,
     },
@@ -276,13 +299,14 @@ const styles = StyleSheet.create({
     },
     word: {
         color: 'white',
-        fontWeight: 'bold',
+        fontFamily: "PoppinsMBold",
         textAlign: 'center',
         fontSize: 30,
         textTransform: 'uppercase'
     },
     wordMusicName: {
         color: 'white',
+        fontFamily: "PoppinsM",
         fontSize: 10,
     },
     background: {
